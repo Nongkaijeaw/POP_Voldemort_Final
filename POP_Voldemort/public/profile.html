@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Pop Voldemort</title>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+</head>
+<body>
+
+    <div class="profile-card">
+        <button class="back-btn" onclick="location.href='index.html'"><i class="fas fa-arrow-left"></i> Back to Game</button>
+        
+        <div class="profile-header">
+            <div class="img-container">
+                <img id="profile-img" src="images/default.png" alt="Profile">
+                <label for="file-upload" class="edit-icon" id="edit-btn">
+                    <i class="fas fa-camera"></i>
+                </label>
+                <input type="file" id="file-upload" accept="image/*" style="display:none;">
+            </div>
+            <h2 id="username">Loading...</h2>
+            <div class="bio-container">
+                <p id="bio" class="bio-text">Dark Lord of Pop</p>
+                <button id="edit-bio-btn" class="edit-bio-btn" style="display:none;" title="Edit bio">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </div>
+            <textarea id="bio-edit" class="bio-edit" style="display:none;" placeholder="Enter your bio..."></textarea>
+            <div class="bio-actions" style="display:none;" id="bio-actions">
+                <button id="save-bio-btn" class="save-btn">Save</button>
+                <button id="cancel-bio-btn" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <h3 id="score-display">0</h3>
+                <small>POPS</small>
+            </div>
+            <div class="stat-item" id="like-section" style="cursor: pointer;">
+                <h3><i class="fas fa-heart" id="like-icon" style="color: gray;"></i> <span id="like-count">0</span></h3>
+                <small>LIKES</small>
+            </div>
+        </div>
+
+        <div class="comments-section">
+            <h3>Comments</h3>
+            <div class="comment-input">
+                <input type="text" id="comment-msg" placeholder="Leave a message...">
+                <button onclick="postComment()">Send</button>
+            </div>
+            <div id="comments-list">
+                </div>
+        </div>
+    </div>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>

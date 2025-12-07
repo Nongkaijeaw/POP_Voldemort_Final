@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Pop Voldemort</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Secret Hogwarts</h1>
+        
+        <div id="login-form">
+            <input type="text" id="login-user" placeholder="Username" required>
+            <input type="password" id="login-pass" placeholder="Password" required>
+            <button id="loginBtn">เข้าสู่ระบบ (Login)</button>
+            
+            <p class="switch-text">
+                ยังไม่มีบัญชี? <span id="to-register">สมัครสมาชิกที่นี่</span>
+            </p>
+        </div>
+
+        <div id="register-form" class="hidden">
+            <input type="text" id="reg-user" placeholder="New Username" required>
+            <input type="password" id="reg-pass" placeholder="New Password" required>
+            
+            <div class="profile-upload-section">
+                <label for="profile-pic-upload">Profile Picture (Optional)</label>
+                <div class="upload-preview-container">
+                    <img id="preview-img" src="" alt="Preview" style="display:none; width:60px; height:60px; border-radius:50%; object-fit:cover;">
+                    <input type="file" id="profile-pic-upload" accept="image/*" style="display:none;">
+                    <label for="profile-pic-upload" class="upload-label">
+                        <i style="font-size:24px;">📷</i>
+                        <span>Choose Photo</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="house-selector">
+                <label>Select Your House</label>
+                <div class="house-options">
+                    <div class="house-option">
+                        <input type="radio" name="house_logo" value="Gryffindor_logo.png" id="gryffindor" required>
+                        <label for="gryffindor" class="house-label">
+                            <img src="images/Gryffindor_logo.png" alt="Gryffindor" class="house-img">
+                            <div class="house-info">
+                                <h4>Gryffindor</h4>
+                                <p>Brave & Bold</p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="house-option">
+                        <input type="radio" name="house_logo" value="Hufflepuff_logo.png" id="hufflepuff">
+                        <label for="hufflepuff" class="house-label">
+                            <img src="images/Hufflepuff_logo.png" alt="Hufflepuff" class="house-img">
+                            <div class="house-info">
+                                <h4>Hufflepuff</h4>
+                                <p>Loyal & Kind</p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="house-option">
+                        <input type="radio" name="house_logo" value="Slytherin_logo.png" id="slytherin">
+                        <label for="slytherin" class="house-label">
+                            <img src="images/Slytherin_logo.png" alt="Slytherin" class="house-img">
+                            <div class="house-info">
+                                <h4>Slytherin</h4>
+                                <p>Cunning & Ambitious</p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="house-option">
+                        <input type="radio" name="house_logo" value="Ravenclaw_logo.png" id="ravenclaw">
+                        <label for="ravenclaw" class="house-label">
+                            <img src="images/Ravenclaw_logo.png" alt="Ravenclaw" class="house-img">
+                            <div class="house-info">
+                                <h4>Ravenclaw</h4>
+                                <p>Wise & Creative</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="regBtn" class="secondary">สมัครสมาชิก (Register)</button>
+            
+            <p class="switch-text">
+                มีบัญชีแล้ว? <span id="to-login">กลับไปหน้า Login</span>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>
