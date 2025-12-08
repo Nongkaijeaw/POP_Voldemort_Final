@@ -26,12 +26,14 @@
         <div class="leaderboard-panel left-panel collapsed">
             <div class="panel-header" onclick="togglePanel('left-panel')">
                 <div class="header-content">
-                    <h2>LeaderBoard</h2>
+                    <h2>Student Leaderboard</h2>
                     <div class="top-players-display" id="top-players-display"></div>
                 </div>
                 <span class="panel-toggle">▼</span>
             </div>
             <div class="panel-content">
+                <input type="text" id="searchStudent" placeholder="Search student name..." class="search-input">
+                <div id="searchResults" class="search-results" style="display: none;"></div>
                 <table id="table"></table>
             </div>
         </div>

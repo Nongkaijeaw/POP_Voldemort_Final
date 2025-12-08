@@ -121,22 +121,26 @@ h1 {
 .panel-header h2 {
     margin: 0;
     font-size: 1.1em;
-    color: #e0e0e0;
+    color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .panel-header span:not(.panel-toggle) {
     font-size: 0.85em;
-    color: #aaa;
+    color: #ffffff;
     font-weight: normal;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .panel-toggle {
-    color: #888;
+    color: #ffffff;
     transition: transform 0.3s ease;
     font-size: 1.2em;
     margin-left: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .leaderboard-panel.collapsed .panel-toggle {
@@ -187,15 +191,17 @@ h1 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #e0e0e0;
+    color: #ffffff;
     position: relative;
     z-index: 2;
     padding-left: 5px;
+    font-weight: 600;
 }
 
 .player-score {
-    color: #aaa;
+    color: #ffffff;
     font-size: 0.85em;
+    font-weight: 600;
 }
 
 
@@ -250,6 +256,79 @@ h1 {
     flex: 1;
     max-height: calc(50vh - 60px);
     transition: opacity 0.3s ease;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #555;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.search-input::placeholder {
+    color: #aaa;
+}
+
+.search-input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #fff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.search-results {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #555;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    border-top: none;
+}
+
+.search-result-item {
+    padding: 10px 12px;
+    color: #ffffff;
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-result-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 16px;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.search-result-info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-result-score {
+    color: #FFD700;
+    font-weight: bold;
 }
 
 .leaderboard-panel.collapsed .panel-content {
@@ -354,6 +433,7 @@ table {
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
 }
 
 table thead {
@@ -363,19 +443,27 @@ table thead {
 table th {
     padding: 15px 10px;
     text-align: left;
-    color: #333333;
+    color: #ffffff;
     font-weight: bold;
     font-size: 14px;
     border-bottom: 2px solid #333333;
     letter-spacing: 0.5px;
 }
 
+table th:last-child {
+    text-align: right;
+}
+
 table td {
     padding: 12px 10px;
     text-align: left;
-    color: #e0e0e0;
+    color: #ffffff;
     border-bottom: 1px solid #333333;
     transition: all 0.3s ease;
+}
+
+table tr:hover td {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 
@@ -472,11 +560,12 @@ table td {
 
 tr.bordered {
     border-bottom: 1px solid #333333;
+    transition: all 0.3s ease;
 }
 
 tr.bordered:hover {
-    background-color: rgba(51, 51, 51, 0.5);
-    transform: scale(1.01);
+    background-color: rgba(51, 51, 51, 0.6);
+    transform: translateX(4px);
 }
 
 tr.bordered:nth-child(even) {
@@ -490,9 +579,9 @@ tr.bordered:nth-child(odd) {
 
 
 tr.top-1 {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 165, 0, 0.15) 100%);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.25) 0%, rgba(255, 165, 0, 0.15) 100%);
     border: 2px solid #FFD700;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5), inset 0 0 10px rgba(255, 215, 0, 0.1);
 }
 
 tr.top-1 td {
@@ -503,9 +592,9 @@ tr.top-1 td {
 
 
 tr.top-2 {
-    background: linear-gradient(135deg, rgba(192, 192, 192, 0.2) 0%, rgba(169, 169, 169, 0.15) 100%);
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.25) 0%, rgba(169, 169, 169, 0.15) 100%);
     border: 2px solid #C0C0C0;
-    box-shadow: 0 0 10px rgba(192, 192, 192, 0.4);
+    box-shadow: 0 0 15px rgba(192, 192, 192, 0.5), inset 0 0 10px rgba(192, 192, 192, 0.1);
 }
 
 tr.top-2 td {
@@ -516,9 +605,9 @@ tr.top-2 td {
 
 
 tr.top-3 {
-    background: linear-gradient(135deg, rgba(205, 127, 50, 0.2) 0%, rgba(184, 115, 51, 0.15) 100%);
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.25) 0%, rgba(184, 115, 51, 0.15) 100%);
     border: 2px solid #CD7F32;
-    box-shadow: 0 0 10px rgba(205, 127, 50, 0.4);
+    box-shadow: 0 0 15px rgba(205, 127, 50, 0.5), inset 0 0 10px rgba(205, 127, 50, 0.1);
 }
 
 tr.top-3 td {
@@ -530,13 +619,14 @@ tr.top-3 td {
 table td:last-child {
     text-align: right;
     font-weight: bold;
-    color: #333333;
+    color: #ffffff;
 }
 
 
 tr.my-row {
-    background-color: rgba(144, 238, 144, 0.15) !important;
-    border-left: 4px solid #90ee90;
+    background-color: rgba(144, 238, 144, 0.2) !important;
+    border-left: 5px solid #90ee90;
+    box-shadow: inset 0 0 8px rgba(144, 238, 144, 0.1);
 }
 
 tr.my-row td {

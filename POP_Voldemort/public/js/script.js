@@ -119,6 +119,8 @@ async function loadLeaderboard() {
         const topPlayersDisplay = document.getElementById("top-players-display");
         if (!table) return;
 
+        allStudents = data;
+
         
         let topPlayersHTML = '';
         for (let i = 0; i < Math.min(3, data.length); i++) {
@@ -276,6 +278,48 @@ loadScore();
 loadLeaderboard();     
 loadHouseLeaderboard(); 
 
+let allStudents = [];
+
+const searchInput = document.getElementById('searchStudent');
+const searchResults = document.getElementById('searchResults');
+
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        
+        if (!searchTerm) {
+            searchResults.style.display = 'none';
+            searchResults.innerHTML = '';
+            return;
+        }
+        
+        const filtered = allStudents.filter(student => 
+            student.username.toLowerCase().includes(searchTerm)
+        );
+        
+        if (filtered.length === 0) {
+            searchResults.innerHTML = '<div class="search-result-item">No students found</div>';
+            searchResults.style.display = 'block';
+            return;
+        }
+        
+        let resultsHTML = '';
+        filtered.forEach(student => {
+            resultsHTML += `
+                <div class="search-result-item" onclick="location.href='profile.html?user=${student.username}'">
+                    <img src="images/${student.img_path}" alt="${student.username}">
+                    <div class="search-result-info">
+                        <span>${student.username}</span>
+                        <span class="search-result-score">${student.score.toLocaleString()}</span>
+                    </div>
+                </div>
+            `;
+        });
+        
+        searchResults.innerHTML = resultsHTML;
+        searchResults.style.display = 'block';
+    });
+}
 
 setInterval(loadLeaderboard, 1000);
 setInterval(loadHouseLeaderboard, 1000);
