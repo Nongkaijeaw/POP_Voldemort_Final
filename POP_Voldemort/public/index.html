@@ -5,22 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POP Voldemort</title>
+    
     <link rel="shortcut icon" type="image/jpg" href="favicon.ico"/>
+    
     <link rel="stylesheet" href="css/style.css">
+    
     <script src="js/script.js" defer></script>
+    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
     <button onclick="location.href='profile.html'" style="position: absolute; top: 20px; left: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; z-index: 100; background-color: #006400; color: white; border: none; border-radius: 5px;">
         My Profile
     </button>
+    
     <button id="logoutBtn" style="position: absolute; top: 20px; right: 20px; padding: 10px 20px; background-color: #ff4444; color: white; border: none; border-radius: 5px; cursor: pointer; z-index: 100;">
         Logout
     </button>
 
     <div class="container">
         <h1>POP Voldemort</h1>
+        
         <p id="score">0</p>
+        
         <img src="images/Voldemort_smile.png" alt="Invalid" id="popcat1" height="600px">
         
         <div class="leaderboard-panel left-panel collapsed">
@@ -31,9 +38,12 @@
                 </div>
                 <span class="panel-toggle">▼</span>
             </div>
+            
             <div class="panel-content">
                 <input type="text" id="searchStudent" placeholder="Search student name..." class="search-input">
+                
                 <div id="searchResults" class="search-results" style="display: none;"></div>
+                
                 <table id="table"></table>
             </div>
         </div>
@@ -46,8 +56,10 @@
                 </div>
                 <span class="panel-toggle">▼</span>
             </div>
+            
             <div class="panel-content">
                 <div class="top-houses-display" id="top-houses-display"></div>
+                
                 <table id="house-table"></table>
             </div>
         </div>

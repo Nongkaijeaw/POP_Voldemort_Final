@@ -260,7 +260,7 @@ app.get('/api/profile', async (req, res) => {
     try {
         const userSql = `SELECT id, username, score, img_path, bio FROM users WHERE username = '${targetUser}'`;
         const userResult = await queryDB(userSql);
-        
+
         if (userResult.length === 0) return res.status(404).json({ error: "User not found" });
         const user = userResult[0];
 
@@ -367,3 +367,4 @@ app.post('/api/comment', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+

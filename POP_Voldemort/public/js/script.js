@@ -1,16 +1,22 @@
+// ========== ELEMENT REFERENCES ==========
+// อ้างอิงองค์ประกอบ HTML หลัก
 const img = document.getElementById("popcat1");
 const scoreText = document.getElementById("score");
 const myScoreText = document.getElementById('my_score');
 const logoutBtn = document.getElementById('logoutBtn');
 
-
+// ========== GAME ASSETS ==========
+// เสียง และรูปภาพที่ใช้ในเกม
 const audio = new Audio('sounds/Oow.mp3'); 
 const imgPop = 'images/Voldemort_POP.png';
 const imgSmile = 'images/Voldemort_smile.png';
 
+// ========== GAME STATE ==========
+// ตัวแปรเก็บค่าคะแนน
 let score = 0;
 
-
+// ========== PANEL TOGGLE FUNCTION ==========
+// ฟังก์ชัน Expand/Collapse Leaderboard Panel
 function togglePanel(panelId) {
     const panel = document.querySelector('.' + panelId);
     if (panel) {
@@ -18,15 +24,14 @@ function togglePanel(panelId) {
     }
 }
 
-
-
-
+// ========== LOAD SCORE FUNCTION ==========
+// ดึงคะแนนล่าสุดจาก Server
 async function loadScore() {
     try {
-        
+        // ส่ง Request ไป /score endpoint
         const res = await fetch('/score');
         
-        
+        // ตรวจสอบว่า Session ยังใช้งานได้
         if (res.status === 401) {
             alert("Session หมดอายุ หรือยังไม่ได้เข้าสู่ระบบ");
             window.location.href = 'login.html'; 
@@ -36,6 +41,7 @@ async function loadScore() {
         if(res.ok) {
             const data = await res.json();
             score = data.score;
+            // อัปเดตการแสดงคะแนนบนหน้า
             updateDisplay(score);
         }
     } catch (err) {
@@ -43,48 +49,58 @@ async function loadScore() {
     }
 }
 
-
+// ========== SEND CLICK TO SERVER ==========
+// ส่งคะแนนไปบันทึกทุกครั้งที่กด
 async function sendClick() {
     try {
-        
+        // POST ไป /score endpoint เพื่อเพิ่มคะแนน
         await fetch('/score', { method: 'POST' });
     } catch (err) {
         console.error("Update score error:", err);
     }
 }
 
-
-
+// ========== UPDATE DISPLAY FUNCTION ==========
+// อัปเดตการแสดงคะแนนบนหน้า
 function updateDisplay(num) {
+    // แปลงเลขให้มีเครื่องหมายจุลภาค
     scoreText.innerText = num.toLocaleString(); 
     if(myScoreText) myScoreText.innerText = num.toLocaleString();
     
-    
+    // อัปเดตในตารางถ้ามี
     const tableScore = document.getElementById("table_score");
     if(tableScore) tableScore.innerText = num.toLocaleString();
 }
 
+// ========== POP FUNCTION ==========
+// ฟังก์ชันเมื่อกดรูป Voldemort
 function pop() {
     score++;
+    // อัปเดตคะแนนทันที
     updateDisplay(score); 
+    // ส่งคะแนนไปเซิร์ฟเวอร์
     sendClick();          
     
-    
+    // รีเซ็ตเวลาเสียงเพื่อให้กดรัวๆได้
     audio.currentTime = 0;
     audio.play();
     
-    
+    // เปลี่ยนรูปตอนกด
     img.src = imgPop;
 }
 
+// ========== UNPOP FUNCTION ==========
+// ฟังก์ชันเมื่อปล่อยจากรูป Voldemort
 function unpop() {
     img.src = imgSmile;
 }
 
-
+// ========== MOUSE & TOUCH EVENT LISTENERS ==========
+// รองรับการกดทั้ง Mouse และ Touch
 img.addEventListener("mousedown", pop);
 img.addEventListener("mouseup", unpop);
 
+// Touch events สำหรับมือถือ
 img.addEventListener("touchstart", (e) => {
     e.preventDefault(); 
     pop();
@@ -94,11 +110,13 @@ img.addEventListener("touchend", (e) => {
     unpop();
 });
 
-
+// ========== LOGOUT BUTTON ==========
+// ปุ่ม Logout - ลบ Cookie และกลับไปหน้า Login
 if(logoutBtn) {
     logoutBtn.addEventListener('click', async () => {
         if(confirm("ต้องการออกจากระบบใช่หรือไม่?")) {
             try {
+                // เรียก API logout
                 await fetch('/logout'); 
                 window.location.href = 'login.html'; 
             } catch (err) {
@@ -108,8 +126,8 @@ if(logoutBtn) {
     });
 }
 
-
-
+// ========== LOAD LEADERBOARD FUNCTION ==========
+// ดึงข้อมูล Top 10 Students จากเซิร์ฟเวอร์
 async function loadLeaderboard() {
     try {
         const res = await fetch('/leaderboard');
